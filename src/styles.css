@@ -1,0 +1,29 @@
+* {
+  box-sizing: content-box;
+  padding: 0;
+  margin: 0;
+}
+
+.part {
+  padding-right: 15%;
+  width: 70%;
+}
+
+.m-24 {
+  margin: 24px 0;
+}
+
+.sliderWrapper::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+}
+
+.sliderWrapper::-webkit-scrollbar-thumb {
+  background-color: #9be0c8; /* Kolor kciuka */
+  border-radius: 6px;
+}
+
+.sliderWrapper {
+  scrollbar-width: thin;
+  scrollbar-color: #9be0c8 transparent;
+}
