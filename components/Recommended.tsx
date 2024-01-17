@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
+import { useInView } from 'react-intersection-observer'
 import { Button, OutlinedButton } from '../styled_components/buttons'
 import {
   FullVerticalSection,
@@ -24,24 +25,9 @@ import {
 import Slider from './Slider'
 
 const Recommended: React.FC = () => {
-  const [isSectionVisible, setIsSectionVisible] = useState(false)
-  const handleScroll = (): void => {
-    const scrollY = window.scrollY
-
-    if (scrollY > 0 && !isSectionVisible) {
-      setIsSectionVisible(true)
-    } else if (scrollY === 0 && isSectionVisible) {
-      setIsSectionVisible(false)
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [isSectionVisible])
+  const [ref, inView] = useInView({
+    triggerOnce: true
+  })
 
   const translateVariants = {
     hidden: {
@@ -58,11 +44,23 @@ const Recommended: React.FC = () => {
     }
   }
 
+  const translateXVariants = {
+    hidden: {
+      translateX: 1000,
+      opacity: 0
+    },
+    visible: {
+      translateX: 0,
+      opacity: 1
+    }
+  }
+
   const slides = [
     <MediumTail
       background="assets/Melbourne.jpg"
-      initial={{ translateX: 1000, opacity: 0 }}
-      animate={{ translateX: 0, opacity: 1 }}
+      variants={translateXVariants}
+      initial="hidden"
+      animate={inView ? 'visible' : 'hidden'}
       transition={{ delay: 0.5, duration: 2.5 }}
     >
       <FullVerticalSection>
@@ -82,8 +80,9 @@ const Recommended: React.FC = () => {
     </MediumTail>,
     <MediumTail
       background="assets/Paris.jpg"
-      initial={{ translateX: 1000, opacity: 0 }}
-      animate={{ translateX: 0, opacity: 1 }}
+      variants={translateXVariants}
+      initial="hidden"
+      animate={inView ? 'visible' : 'hidden'}
       transition={{ delay: 1, duration: 2.5 }}
     >
       <FullVerticalSection>
@@ -103,8 +102,9 @@ const Recommended: React.FC = () => {
     </MediumTail>,
     <MediumTail
       background="assets/London.jpg"
-      initial={{ translateX: 1000, opacity: 0 }}
-      animate={{ translateX: 0, opacity: 1 }}
+      variants={translateXVariants}
+      initial="hidden"
+      animate={inView ? 'visible' : 'hidden'}
       transition={{ delay: 1.5, duration: 2.5 }}
     >
       <FullVerticalSection>
@@ -124,8 +124,9 @@ const Recommended: React.FC = () => {
     </MediumTail>,
     <MediumTail
       background="assets/Columbia.jpg"
-      initial={{ translateX: 1000, opacity: 0 }}
-      animate={{ translateX: 0, opacity: 1 }}
+      variants={translateXVariants}
+      initial="hidden"
+      animate={inView ? 'visible' : 'hidden'}
       transition={{ delay: 2, duration: 2.5 }}
     >
       <FullVerticalSection>
@@ -148,9 +149,10 @@ const Recommended: React.FC = () => {
   return (
     <MarginSection>
       <VerticalSection
+        ref={ref}
         variants={translateVariants}
         initial="hidden"
-        animate={isSectionVisible ? 'visible' : 'hidden'}
+        animate={inView ? 'visible' : 'hidden'}
         width="100%"
       >
         <MediumHedlineText>Fall into travel</MediumHedlineText>

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
+import { useInView } from 'react-intersection-observer'
 import { Button, OutlinedButton } from '../styled_components/buttons'
 import {
   BigTail,
@@ -22,25 +23,9 @@ import {
 import { mintGreen, white } from '../styled_components/variables'
 
 const Gallery: React.FC = () => {
-  const [isSectionVisible, setIsSectionVisible] = useState(false)
-  const handleScroll = (): void => {
-    const scrollY = window.scrollY
-    console.log('scroll: ', scrollY)
-
-    if (scrollY > 600 && !isSectionVisible) {
-      setIsSectionVisible(true)
-    } else if (scrollY === 0 && isSectionVisible) {
-      setIsSectionVisible(false)
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [isSectionVisible])
+  const [ref, inView] = useInView({
+    triggerOnce: true
+  })
 
   const translateVariants = {
     hidden: {
@@ -56,12 +41,29 @@ const Gallery: React.FC = () => {
       }
     }
   }
+
+  const scaleVariants = {
+    hidden: {
+      scale: 0,
+      opacity: 0
+    },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        delay: 0.5,
+        duration: 2.5
+      }
+    }
+  }
+
   return (
     <MarginSection>
       <VerticalSection
+        ref={ref}
         variants={translateVariants}
         initial="hidden"
-        animate={isSectionVisible ? 'visible' : 'hidden'}
+        animate={inView ? 'visible' : 'hidden'}
         width="100%"
       >
         <MediumHedlineText>Fall into travel</MediumHedlineText>
@@ -78,8 +80,9 @@ const Gallery: React.FC = () => {
 
         <FullWidthHorizontalSection className="m-24" wrap="nowrap">
           <BigTail
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
+            variants={scaleVariants}
+            initial="hidden"
+            animate={inView ? 'visible' : 'hidden'}
             transition={{ delay: 0.5, duration: 2.5 }}
           >
             <VerticalSection justify="space-between" height="100%" width="100%">
@@ -112,29 +115,29 @@ const Gallery: React.FC = () => {
             <FullVerticalSection width="45%">
               <SmallTail
                 background="assets/Travel1.jpg"
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.5, duration: 2.5 }}
+                variants={scaleVariants}
+                initial="hidden"
+                animate={inView ? 'visible' : 'hidden'}
               ></SmallTail>
               <SmallTail
                 background="assets/Travel2.jpg"
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.5, duration: 2.5 }}
+                variants={scaleVariants}
+                initial="hidden"
+                animate={inView ? 'visible' : 'hidden'}
               ></SmallTail>
             </FullVerticalSection>
             <FullVerticalSection width="45%">
               <SmallTail
                 background="assets/Travel3.jpg"
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.5, duration: 2.5 }}
+                variants={scaleVariants}
+                initial="hidden"
+                animate={inView ? 'visible' : 'hidden'}
               ></SmallTail>
               <SmallTail
                 background="assets/Travel4.jpg"
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.5, duration: 2.5 }}
+                variants={scaleVariants}
+                initial="hidden"
+                animate={inView ? 'visible' : 'hidden'}
               ></SmallTail>
             </FullVerticalSection>
           </FullWidthHorizontalSection>
