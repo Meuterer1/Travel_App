@@ -38,6 +38,7 @@ const Searches: React.FC = () => {
       animate={inView ? 'visible' : 'hidden'}
       transition={{ delay: 1, duration: 2.5 }}
       width="100%"
+      key={0}
     >
       <HorizontalSection>
         <SmallTail src="assets/Istanbul.jpg" alt="vacation image" />
@@ -53,6 +54,7 @@ const Searches: React.FC = () => {
       animate={inView ? 'visible' : 'hidden'}
       transition={{ delay: 1.5, duration: 2.5 }}
       width="100%"
+      key={1}
     >
       <HorizontalSection>
         <SmallTail src="assets/Australia.jpg" alt="vacation image" />
@@ -68,6 +70,7 @@ const Searches: React.FC = () => {
       animate={inView ? 'visible' : 'hidden'}
       transition={{ delay: 2, duration: 2.5 }}
       width="100%"
+      key={2}
     >
       <HorizontalSection>
         <SmallTail src="assets/Baku.jpg" alt="vacation image" />
@@ -83,6 +86,7 @@ const Searches: React.FC = () => {
       animate={inView ? 'visible' : 'hidden'}
       transition={{ delay: 2.5, duration: 2.5 }}
       width="100%"
+      key={3}
     >
       <HorizontalSection>
         <SmallTail src="assets/Maledives.jpg" alt="vacation image" />

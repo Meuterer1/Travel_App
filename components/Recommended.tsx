@@ -62,6 +62,7 @@ const Recommended: React.FC = () => {
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
       transition={{ delay: 0.5, duration: 2.5 }}
+      key={0}
     >
       <FullVerticalSection>
         <FullWidthHorizontalSection>
@@ -84,6 +85,7 @@ const Recommended: React.FC = () => {
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
       transition={{ delay: 1, duration: 2.5 }}
+      key={1}
     >
       <FullVerticalSection>
         <FullWidthHorizontalSection>
@@ -106,6 +108,7 @@ const Recommended: React.FC = () => {
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
       transition={{ delay: 1.5, duration: 2.5 }}
+      key={2}
     >
       <FullVerticalSection>
         <FullWidthHorizontalSection>
@@ -128,6 +131,7 @@ const Recommended: React.FC = () => {
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
       transition={{ delay: 2, duration: 2.5 }}
+      key={3}
     >
       <FullVerticalSection>
         <FullWidthHorizontalSection>

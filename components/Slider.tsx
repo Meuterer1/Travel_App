@@ -24,8 +24,8 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
   const sliderRef = useRef<HTMLDivElement>(null)
   const [scrollPosition, setScrollPosition] = useState(0)
 
-  const handleScroll = () => {
-    if (sliderRef.current) {
+  const handleScroll: (event: React.UIEvent<HTMLElement>) => void = () => {
+    if (sliderRef.current != null) {
       const newPosition = sliderRef.current.scrollLeft
       setScrollPosition(newPosition)
     }

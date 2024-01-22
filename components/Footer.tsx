@@ -1,3 +1,4 @@
+import React from 'react'
 import { SmallButton } from '../styled_components/buttons'
 import { FooterDiv, FooterImage } from '../styled_components/divs'
 import { PrimaryInput } from '../styled_components/inputs'
@@ -25,7 +26,7 @@ import { FooterIcon, IconAbsolute } from '../styled_components/images'
 import { ButtonLink } from '../styled_components/links'
 import { ListHeadline, ListItem, UnList } from '../styled_components/lists'
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <FooterDiv>
       <FooterSubscribeSection background={lightMint}>

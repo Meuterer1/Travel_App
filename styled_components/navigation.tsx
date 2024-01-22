@@ -7,7 +7,7 @@ export const Nav = styled.nav`
   justify-content: space-between;
   padding: 24px 32px;
 
-  @media(max-width: 550px) {
+  @media (max-width: 550px) {
     flex-wrap: nowrap;
   }
 `
