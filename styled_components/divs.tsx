@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
 export const HeaderDiv = styled.div`
@@ -21,7 +22,7 @@ export const HeaderDiv = styled.div`
     padding: 10px 30px;
   }
 `
-export const FooterImage = styled.div`
+export const FooterImage = styled(motion.div)`
   width: 400px;
   height: 305px;
   flex-shrink: 0;

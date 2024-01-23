@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
 
 interface SliderProps {
@@ -22,22 +22,10 @@ const SliderWrapper = styled.div`
 
 const Slider: React.FC<SliderProps> = ({ slides }) => {
   const sliderRef = useRef<HTMLDivElement>(null)
-  const [scrollPosition, setScrollPosition] = useState(0)
-
-  const handleScroll: (event: React.UIEvent<HTMLElement>) => void = () => {
-    if (sliderRef.current != null) {
-      const newPosition = sliderRef.current.scrollLeft
-      setScrollPosition(newPosition)
-    }
-  }
 
   return (
     <>
-      <SliderWrapper
-        ref={sliderRef}
-        onScroll={handleScroll}
-        className="sliderWrapper"
-      >
+      <SliderWrapper ref={sliderRef} className="sliderWrapper">
         {slides.map((slide, index) => (
           <SliderItem key={index}>{slide}</SliderItem>
         ))}

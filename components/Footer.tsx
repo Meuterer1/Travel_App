@@ -22,11 +22,26 @@ import {
   white
 } from '../styled_components/variables'
 
+import { useInView } from 'react-intersection-observer'
 import { FooterIcon, IconAbsolute } from '../styled_components/images'
 import { ButtonLink } from '../styled_components/links'
 import { ListHeadline, ListItem, UnList } from '../styled_components/lists'
 
 const Footer: React.FC = () => {
+  const [ref, inView] = useInView()
+
+  const rotateVariants = {
+    hidden: {
+      rotate: 0
+    },
+    visible: {
+      rotate: [-5, 5, -5, 5, -5, 5, -5, 5, 0],
+      transition: {
+        duration: 1.5
+      }
+    }
+  }
+
   return (
     <FooterDiv>
       <FooterSubscribeSection background={lightMint}>
@@ -58,7 +73,13 @@ const Footer: React.FC = () => {
             </SmallButton>
           </FullWidthHorizontalSection>
         </VerticalSection>
-        <FooterImage>
+        <FooterImage
+          ref={ref}
+          variants={rotateVariants}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          transition={{ delay: 0.5, duration: 2.5 }}
+        >
           <IconAbsolute
             src="assets/Vector1.png"
             alt="vector"
