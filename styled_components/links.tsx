@@ -11,6 +11,7 @@ export const ButtonLink = styled(Link)<LinkProps>`
   color: ${props => (props.color ? props.color : blackishGreen)};
   padding-right: 32px;
   text-decoration: none;
+  transition: 0.7s ease;
 
   &:hover,
   &:focus {

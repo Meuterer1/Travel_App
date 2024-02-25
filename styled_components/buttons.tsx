@@ -21,6 +21,7 @@ export const Button = styled.button<ButtonProps>`
   justify-content: center;
   padding: 3px 24px;
   flex: 1 0 0;
+  transition: 0.7s ease;
 
   &:hover {
     background: ${props => props.hovered};
