@@ -29,15 +29,14 @@ const Gallery: React.FC = () => {
 
   const translateVariants = {
     hidden: {
-      translateY: 100,
+      translateY: 50,
       opacity: 0
     },
     visible: {
       translateY: 0,
       opacity: 1,
       transition: {
-        delay: 0.5,
-        duration: 2.5
+        duration: 0.5
       }
     }
   }
@@ -83,7 +82,7 @@ const Gallery: React.FC = () => {
             variants={scaleVariants}
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
-            transition={{ delay: 0.5, duration: 2.5 }}
+            transition={{ duration: 0.5 }}
           >
             <VerticalSection justify="space-between" height="100%" width="100%">
               <FullWidthHorizontalSection>

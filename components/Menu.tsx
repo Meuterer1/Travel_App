@@ -37,22 +37,7 @@ const Menu: React.FC = () => {
       opacity: 1,
       transition: {
         delay: 0.5,
-        duration: 2.5
-      }
-    }
-  }
-
-  const scaleVariants = {
-    hidden: {
-      scale: 0,
-      opacity: 0
-    },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        delay: 0.5,
-        duration: 3
+        duration: 2
       }
     }
   }
@@ -64,7 +49,7 @@ const Menu: React.FC = () => {
         <ColumnSection>
           <HeadlineText
             color={white}
-            variants={scaleVariants}
+            variants={translateVariants}
             initial="hidden"
             animate="visible"
           >
@@ -72,7 +57,7 @@ const Menu: React.FC = () => {
           </HeadlineText>
           <BigHeadlineText
             color={white}
-            variants={scaleVariants}
+            variants={translateVariants}
             initial="hidden"
             animate="visible"
           >

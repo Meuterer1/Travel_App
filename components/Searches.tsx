@@ -36,7 +36,7 @@ const Searches: React.FC = () => {
       variants={translateVariants}
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
-      transition={{ delay: 1, duration: 2.5 }}
+      transition={{ duration: 1.5 }}
       width="100%"
       key={0}
     >
@@ -52,7 +52,7 @@ const Searches: React.FC = () => {
       variants={translateVariants}
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
-      transition={{ delay: 1.5, duration: 2.5 }}
+      transition={{ delay: 0.5, duration: 1.5 }}
       width="100%"
       key={1}
     >
@@ -68,7 +68,7 @@ const Searches: React.FC = () => {
       variants={translateVariants}
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
-      transition={{ delay: 2, duration: 2.5 }}
+      transition={{ delay: 1, duration: 1.5 }}
       width="100%"
       key={2}
     >
@@ -84,7 +84,7 @@ const Searches: React.FC = () => {
       variants={translateVariants}
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
-      transition={{ delay: 2.5, duration: 2.5 }}
+      transition={{ delay: 1.5, duration: 1.5 }}
       width="100%"
       key={3}
     >
@@ -106,8 +106,7 @@ const Searches: React.FC = () => {
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
         transition={{
-          delay: 0.5,
-          duration: 2.5
+          duration: 1
         }}
         width="100%"
       >
