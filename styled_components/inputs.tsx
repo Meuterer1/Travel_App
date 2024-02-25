@@ -1,4 +1,13 @@
+import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { type InputHTMLAttributes } from 'react'
 import styled from 'styled-components'
+
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  type: string
+  id: string
+  name: string
+}
 
 export const DescribedInput = styled.input`
   display: flex;
@@ -37,7 +46,19 @@ export const PrimaryInput = styled.input`
   align-self: stretch;
 `
 
-export const DateInput = styled.input`
+export const DateContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  .dateIcon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+`
+
+export const DateInputComponent = styled.input`
   border: 1px solid black;
   border-radius: 4px;
   padding: 14px 16px;
@@ -49,4 +70,38 @@ export const DateInput = styled.input`
   line-height: normal;
 
   margin: 10px 0;
+
+  &::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+  }
 `
+
+export const DateInput: React.FC<InputProps> = ({
+  type,
+  id,
+  name,
+  onClick,
+  ...props
+}) => {
+  return (
+    <DateContainer>
+      <DateInputComponent
+        type={type}
+        id={id}
+        name={name}
+        onClick={onClick}
+        {...props}
+      />
+      <FontAwesomeIcon className="dateIcon" icon={faCalendarDays} />
+    </DateContainer>
+  )
+}

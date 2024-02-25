@@ -88,9 +88,9 @@ const Menu: React.FC = () => {
             </VerticalSection>
             <VerticalSection>
               <InputDescription>
-                <label htmlFor="birthday">Check In</label>
+                <label htmlFor="checkIn">Check In</label>
               </InputDescription>
-              <DateInput type="date" id="birthday" name="birthday" />
+              <DateInput type="date" id="checkIn" name="birthday" />
             </VerticalSection>
             <VerticalSection>
               <InputDescription>
